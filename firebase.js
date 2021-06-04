@@ -4,13 +4,13 @@ import "firebase/auth";
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBV3ShzU5PxYHtdrEZSGCe5IXOSl-fx0og",
-    authDomain: "barta-pathok.firebaseapp.com",
-    projectId: "barta-pathok",
-    storageBucket: "barta-pathok.appspot.com",
-    messagingSenderId: "500272577641",
-    appId: "1:500272577641:web:538545d8806f969026b6f8"
-  };
+  apiKey: "AIzaSyCIrmgxrxmJvo_mG1KYqXzCnQu16rxGz_0",
+  authDomain: "barta-pathok-e36f6.firebaseapp.com",
+  projectId: "barta-pathok-e36f6",
+  storageBucket: "barta-pathok-e36f6.appspot.com",
+  messagingSenderId: "159517111049",
+  appId: "1:159517111049:web:87331f48355f1c43dad9d8"
+};
 
 let app;
 

@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { KeyboardAvoidingView } from 'react-native';
 import { useEffect } from 'react';
 import { auth } from '../firebase';
+import { color } from 'react-native-reanimated';
 
 const LoginScreen = ({navigation}) => {
     const [email, setEmail] = useState('');
@@ -14,6 +15,8 @@ const LoginScreen = ({navigation}) => {
 
     useEffect(()=>{
    const unsubscribe=auth.onAuthStateChanged((authUser)=>{
+       console.log(authUser);
+
             if(authUser)
             {
                 navigation.replace('Home');
@@ -23,12 +26,15 @@ const LoginScreen = ({navigation}) => {
     },[]);
     
     const signIn = () => {
+        auth
+        .signInWithEmailAndPassword(email, password)
+        .catch((error) => alert(error));
 
-    }
+    };
     return (
         <KeyboardAvoidingView behavior='padding' enabled style={styles.container}>
             <StatusBar style="light" />
-            <Image source={barta} style={{ width: 200, height: 200 ,marginBottom:"10px"}} />
+            <Image source={barta} style={{ width: 200, height: 200,marginBottom:20 }} />
             <View style={styles.inputContainer}>
                 <Input placeholder="Email"
                     autoFocus
@@ -40,6 +46,7 @@ const LoginScreen = ({navigation}) => {
                     autoFocus type='password'
                     value={password}
                     onChangeText={(text) => setPassword(text)}
+                    onSubmitEditing={signIn}
                 />
             </View>
             <Button containerStyle={styles.button} onPress={signIn} title='Login' />
@@ -66,5 +73,6 @@ const styles = StyleSheet.create({
     button: {
         width: 200,
         marginTop: 10,
+        
     },
 });
